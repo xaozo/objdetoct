@@ -1,0 +1,1711 @@
+[11/28 11:11:44] detectron2 INFO: Rank of current process: 0. World size: 1
+[11/28 11:11:45] detectron2 INFO: Environment info:
+----------------------  -----------------------------------------------------------------------------------------
+sys.platform            linux
+Python                  3.10.8 (main, Nov  4 2022, 13:48:29) [GCC 11.2.0]
+numpy                   1.23.4
+detectron2              0.6 @/home/general/detectron2/detectron2
+Compiler                GCC 9.4
+CUDA compiler           not available
+DETECTRON2_ENV_MODULE   <not set>
+PyTorch                 1.13.0+cu117 @/home/general/miniconda3/envs/test/lib/python3.10/site-packages/torch
+PyTorch debug build     False
+GPU available           Yes
+GPU 0                   NVIDIA GeForce RTX 3090 (arch=8.6)
+Driver version          526.98
+CUDA_HOME               /usr
+Pillow                  9.3.0
+torchvision             0.14.0+cu117 @/home/general/miniconda3/envs/test/lib/python3.10/site-packages/torchvision
+torchvision arch flags  3.5, 5.0, 6.0, 7.0, 7.5, 8.0, 8.6
+fvcore                  0.1.5.post20220512
+iopath                  0.1.9
+cv2                     4.6.0
+----------------------  -----------------------------------------------------------------------------------------
+PyTorch built with:
+  - GCC 9.3
+  - C++ Version: 201402
+  - Intel(R) Math Kernel Library Version 2020.0.0 Product Build 20191122 for Intel(R) 64 architecture applications
+  - Intel(R) MKL-DNN v2.6.0 (Git Hash 52b5f107dd9cf10910aaa19cb47f3abf9b349815)
+  - OpenMP 201511 (a.k.a. OpenMP 4.5)
+  - LAPACK is enabled (usually provided by MKL)
+  - NNPACK is enabled
+  - CPU capability usage: AVX2
+  - CUDA Runtime 11.7
+  - NVCC architecture flags: -gencode;arch=compute_37,code=sm_37;-gencode;arch=compute_50,code=sm_50;-gencode;arch=compute_60,code=sm_60;-gencode;arch=compute_70,code=sm_70;-gencode;arch=compute_75,code=sm_75;-gencode;arch=compute_80,code=sm_80;-gencode;arch=compute_86,code=sm_86
+  - CuDNN 8.5
+  - Magma 2.6.1
+  - Build settings: BLAS_INFO=mkl, BUILD_TYPE=Release, CUDA_VERSION=11.7, CUDNN_VERSION=8.5.0, CXX_COMPILER=/opt/rh/devtoolset-9/root/usr/bin/c++, CXX_FLAGS= -fabi-version=11 -Wno-deprecated -fvisibility-inlines-hidden -DUSE_PTHREADPOOL -fopenmp -DNDEBUG -DUSE_KINETO -DUSE_FBGEMM -DUSE_QNNPACK -DUSE_PYTORCH_QNNPACK -DUSE_XNNPACK -DSYMBOLICATE_MOBILE_DEBUG_HANDLE -DEDGE_PROFILER_USE_KINETO -O2 -fPIC -Wno-narrowing -Wall -Wextra -Werror=return-type -Werror=non-virtual-dtor -Wno-missing-field-initializers -Wno-type-limits -Wno-array-bounds -Wno-unknown-pragmas -Wunused-local-typedefs -Wno-unused-parameter -Wno-unused-function -Wno-unused-result -Wno-strict-overflow -Wno-strict-aliasing -Wno-error=deprecated-declarations -Wno-stringop-overflow -Wno-psabi -Wno-error=pedantic -Wno-error=redundant-decls -Wno-error=old-style-cast -fdiagnostics-color=always -faligned-new -Wno-unused-but-set-variable -Wno-maybe-uninitialized -fno-math-errno -fno-trapping-math -Werror=format -Werror=cast-function-type -Wno-stringop-overflow, LAPACK_INFO=mkl, PERF_WITH_AVX=1, PERF_WITH_AVX2=1, PERF_WITH_AVX512=1, TORCH_VERSION=1.13.0, USE_CUDA=ON, USE_CUDNN=ON, USE_EXCEPTION_PTR=1, USE_GFLAGS=OFF, USE_GLOG=OFF, USE_MKL=ON, USE_MKLDNN=ON, USE_MPI=OFF, USE_NCCL=ON, USE_NNPACK=ON, USE_OPENMP=ON, USE_ROCM=OFF, 
+
+[11/28 11:11:45] detectron2 INFO: Command line arguments: Namespace(config_file='./configs/Detection/faster_rcnn_R_50_FPN_3x.yaml', resume=False, eval_only=False, num_gpus=1, num_machines=1, machine_rank=0, dist_url='tcp://127.0.0.1:50152', opts=[])
+[11/28 11:11:45] detectron2 INFO: Contents of args.config_file=./configs/Detection/faster_rcnn_R_50_FPN_3x.yaml:
+[38;5;197m_BASE_[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m"[39m[38;5;186m../Base-RCNN-FPN.yaml[39m[38;5;186m"[39m
+[38;5;197mMODEL[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mWEIGHTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m"[39m[38;5;186mdetectron2://ImageNetPretrained/MSRA/R-50.pkl[39m[38;5;186m"[39m
+[38;5;15m  [39m[38;5;197mMASK_ON[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mFalse[39m
+[38;5;15m  [39m[38;5;197mRESNETS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mDEPTH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m50[39m
+[38;5;197mSOLVER[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mSTEPS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m(210000,[39m[38;5;141m [39m[38;5;141m250000)[39m
+[38;5;15m  [39m[38;5;197mMAX_ITER[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m270000[39m
+
+[11/28 11:11:45] detectron2 INFO: Running with full config:
+[38;5;197mCUDNN_BENCHMARK[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;197mDATALOADER[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mASPECT_RATIO_GROUPING[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m  [39m[38;5;197mFILTER_EMPTY_ANNOTATIONS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m  [39m[38;5;197mNUM_WORKERS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4[39m
+[38;5;15m  [39m[38;5;197mREPEAT_THRESHOLD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;15m  [39m[38;5;197mSAMPLER_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mTrainingSampler[39m
+[38;5;197mDATASETS[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mPRECOMPUTED_PROPOSAL_TOPK_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m  [39m[38;5;197mPRECOMPUTED_PROPOSAL_TOPK_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2000[39m
+[38;5;15m  [39m[38;5;197mPROPOSAL_FILES_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m[[39m[38;5;15m][39m
+[38;5;15m  [39m[38;5;197mPROPOSAL_FILES_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m[[39m[38;5;15m][39m
+[38;5;15m  [39m[38;5;197mTEST[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mval[39m
+[38;5;15m  [39m[38;5;197mTRAIN[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mtrain[39m
+[38;5;197mGLOBAL[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mHACK[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;197mINPUT[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mCROP[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mSIZE[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.9[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.9[39m
+[38;5;15m    [39m[38;5;197mTYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mrelative_range[39m
+[38;5;15m  [39m[38;5;197mFORMAT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mBGR[39m
+[38;5;15m  [39m[38;5;197mMASK_FORMAT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mpolygon[39m
+[38;5;15m  [39m[38;5;197mMAX_SIZE_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1333[39m
+[38;5;15m  [39m[38;5;197mMAX_SIZE_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1333[39m
+[38;5;15m  [39m[38;5;197mMIN_SIZE_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m800[39m
+[38;5;15m  [39m[38;5;197mMIN_SIZE_TRAIN[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m640[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m672[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m704[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m736[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m768[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m800[39m
+[38;5;15m  [39m[38;5;197mMIN_SIZE_TRAIN_SAMPLING[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mchoice[39m
+[38;5;15m  [39m[38;5;197mRANDOM_FLIP[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mhorizontal[39m
+[38;5;197mMODEL[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mANCHOR_GENERATOR[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mANGLES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m-90[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m90[39m
+[38;5;15m    [39m[38;5;197mASPECT_RATIOS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m2.0[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mDefaultAnchorGenerator[39m
+[38;5;15m    [39m[38;5;197mOFFSET[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;15m    [39m[38;5;197mSIZES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m32[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m64[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m128[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m  [39m[38;5;197mBACKBONE[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mFREEZE_AT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mbuild_resnet_fpn_backbone[39m
+[38;5;15m  [39m[38;5;197mDEVICE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mcuda[39m
+[38;5;15m  [39m[38;5;197mFPN[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mFUSE_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141msum[39m
+[38;5;15m    [39m[38;5;197mIN_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres2[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres5[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m'[39m[38;5;186m'[39m
+[38;5;15m    [39m[38;5;197mOUT_CHANNELS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m  [39m[38;5;197mKEYPOINT_ON[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mLOAD_PROPOSALS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mMASK_ON[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mMETA_ARCHITECTURE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mGeneralizedRCNN[39m
+[38;5;15m  [39m[38;5;197mPANOPTIC_FPN[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mCOMBINE[39m[38;5;15m:[39m
+[38;5;15m      [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m      [39m[38;5;197mINSTANCES_CONFIDENCE_THRESH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m      [39m[38;5;197mOVERLAP_THRESH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m      [39m[38;5;197mSTUFF_AREA_LIMIT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4096[39m
+[38;5;15m    [39m[38;5;197mINSTANCE_LOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m  [39m[38;5;197mPIXEL_MEAN[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m103.53[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m116.28[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m123.675[39m
+[38;5;15m  [39m[38;5;197mPIXEL_STD[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m  [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m  [39m[38;5;197mPROPOSAL_GENERATOR[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mMIN_SIZE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mRPN[39m
+[38;5;15m  [39m[38;5;197mRESNETS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mDEFORM_MODULATED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mDEFORM_NUM_GROUPS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mDEFORM_ON_PER_STAGE[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mDEPTH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m50[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mFrozenBN[39m
+[38;5;15m    [39m[38;5;197mNUM_GROUPS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mOUT_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres2[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mres5[39m
+[38;5;15m    [39m[38;5;197mRES2_OUT_CHANNELS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m    [39m[38;5;197mRES5_DILATION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mSTEM_OUT_CHANNELS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m64[39m
+[38;5;15m    [39m[38;5;197mSTRIDE_IN_1X1[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m    [39m[38;5;197mWIDTH_PER_GROUP[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m64[39m
+[38;5;15m  [39m[38;5;197mRETINANET[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_LOSS_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141msmooth_l1[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_WEIGHTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m&id002[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mFOCAL_LOSS_ALPHA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.25[39m
+[38;5;15m    [39m[38;5;197mFOCAL_LOSS_GAMMA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2.0[39m
+[38;5;15m    [39m[38;5;197mIN_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp5[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp6[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp7[39m
+[38;5;15m    [39m[38;5;197mIOU_LABELS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m-1[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mIOU_THRESHOLDS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mNMS_THRESH_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m'[39m[38;5;186m'[39m
+[38;5;15m    [39m[38;5;197mNUM_CLASSES[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m3[39m
+[38;5;15m    [39m[38;5;197mNUM_CONVS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4[39m
+[38;5;15m    [39m[38;5;197mPRIOR_PROB[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.01[39m
+[38;5;15m    [39m[38;5;197mSCORE_THRESH_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.05[39m
+[38;5;15m    [39m[38;5;197mSMOOTH_L1_LOSS_BETA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.1[39m
+[38;5;15m    [39m[38;5;197mTOPK_CANDIDATES_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m  [39m[38;5;197mROI_BOX_CASCADE_HEAD[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_WEIGHTS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m&id001[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m10.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m10.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m5.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m5.0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m20.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m20.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m10.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m10.0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m30.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m30.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m15.0[39m
+[38;5;15m      [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m15.0[39m
+[38;5;15m    [39m[38;5;197mIOUS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.6[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.7[39m
+[38;5;15m  [39m[38;5;197mROI_BOX_HEAD[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_LOSS_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141msmooth_l1[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_LOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_WEIGHTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m*id001[39m
+[38;5;15m    [39m[38;5;197mCLS_AGNOSTIC_BBOX_REG[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mCONV_DIM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m    [39m[38;5;197mFC_DIM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1024[39m
+[38;5;15m    [39m[38;5;197mFED_LOSS_FREQ_WEIGHT_POWER[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mFED_LOSS_NUM_CLASSES[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m50[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mFastRCNNConvFCHead[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m'[39m[38;5;186m'[39m
+[38;5;15m    [39m[38;5;197mNUM_CONV[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;197mNUM_FC[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2[39m
+[38;5;15m    [39m[38;5;197mPOOLER_RESOLUTION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m7[39m
+[38;5;15m    [39m[38;5;197mPOOLER_SAMPLING_RATIO[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;197mPOOLER_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mROIAlignV2[39m
+[38;5;15m    [39m[38;5;197mSMOOTH_L1_BETA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;15m    [39m[38;5;197mTRAIN_ON_PRED_BOXES[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mUSE_FED_LOSS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mUSE_SIGMOID_CE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mROI_HEADS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mBATCH_SIZE_PER_IMAGE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;197mIN_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp2[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp5[39m
+[38;5;15m    [39m[38;5;197mIOU_LABELS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mIOU_THRESHOLDS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mStandardROIHeads[39m
+[38;5;15m    [39m[38;5;197mNMS_THRESH_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mNUM_CLASSES[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m3[39m
+[38;5;15m    [39m[38;5;197mPOSITIVE_FRACTION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.25[39m
+[38;5;15m    [39m[38;5;197mPROPOSAL_APPEND_GT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m    [39m[38;5;197mSCORE_THRESH_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.05[39m
+[38;5;15m  [39m[38;5;197mROI_HEADS_BATCH_SIZE_PER_IMAGE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m64[39m
+[38;5;15m  [39m[38;5;197mROI_KEYPOINT_HEAD[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mCONV_DIMS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m512[39m
+[38;5;15m    [39m[38;5;197mLOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mMIN_KEYPOINTS_PER_IMAGE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mKRCNNConvDeconvUpsampleHead[39m
+[38;5;15m    [39m[38;5;197mNORMALIZE_LOSS_BY_VISIBLE_KEYPOINTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m    [39m[38;5;197mNUM_KEYPOINTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m17[39m
+[38;5;15m    [39m[38;5;197mPOOLER_RESOLUTION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m14[39m
+[38;5;15m    [39m[38;5;197mPOOLER_SAMPLING_RATIO[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;197mPOOLER_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mROIAlignV2[39m
+[38;5;15m  [39m[38;5;197mROI_MASK_HEAD[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mCLS_AGNOSTIC_MASK[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mCONV_DIM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mMaskRCNNConvUpsampleHead[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;186m'[39m[38;5;186m'[39m
+[38;5;15m    [39m[38;5;197mNUM_CONV[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4[39m
+[38;5;15m    [39m[38;5;197mPOOLER_RESOLUTION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m14[39m
+[38;5;15m    [39m[38;5;197mPOOLER_SAMPLING_RATIO[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;197mPOOLER_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mROIAlignV2[39m
+[38;5;15m  [39m[38;5;197mRPN[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mBATCH_SIZE_PER_IMAGE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m256[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_LOSS_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141msmooth_l1[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_LOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mBBOX_REG_WEIGHTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m*id002[39m
+[38;5;15m    [39m[38;5;197mBOUNDARY_THRESH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m-1[39m
+[38;5;15m    [39m[38;5;197mCONV_DIMS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m-1[39m
+[38;5;15m    [39m[38;5;197mHEAD_NAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mStandardRPNHead[39m
+[38;5;15m    [39m[38;5;197mIN_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp2[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp5[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp6[39m
+[38;5;15m    [39m[38;5;197mIOU_LABELS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m-1[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1[39m
+[38;5;15m    [39m[38;5;197mIOU_THRESHOLDS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m0.7[39m
+[38;5;15m    [39m[38;5;197mLOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mNMS_THRESH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.7[39m
+[38;5;15m    [39m[38;5;197mPOSITIVE_FRACTION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.5[39m
+[38;5;15m    [39m[38;5;197mPOST_NMS_TOPK_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m    [39m[38;5;197mPOST_NMS_TOPK_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m    [39m[38;5;197mPRE_NMS_TOPK_TEST[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m    [39m[38;5;197mPRE_NMS_TOPK_TRAIN[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2000[39m
+[38;5;15m    [39m[38;5;197mSMOOTH_L1_BETA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;15m  [39m[38;5;197mSEM_SEG_HEAD[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mCOMMON_STRIDE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4[39m
+[38;5;15m    [39m[38;5;197mCONVS_DIM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m128[39m
+[38;5;15m    [39m[38;5;197mIGNORE_VALUE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m255[39m
+[38;5;15m    [39m[38;5;197mIN_FEATURES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp2[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp3[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp4[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141mp5[39m
+[38;5;15m    [39m[38;5;197mLOSS_WEIGHT[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mNAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mSemSegFPNHead[39m
+[38;5;15m    [39m[38;5;197mNORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mGN[39m
+[38;5;15m    [39m[38;5;197mNUM_CLASSES[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m54[39m
+[38;5;15m  [39m[38;5;197mWEIGHTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mdetectron2://ImageNetPretrained/MSRA/R-50.pkl[39m
+[38;5;197mOUTPUT_DIR[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m./output/trial-2022-11-28-11-11-44[39m
+[38;5;197mSEED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m-1[39m
+[38;5;197mSOLVER[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mAMP[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mBASE_LR[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0001[39m
+[38;5;15m  [39m[38;5;197mBASE_LR_END[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;15m  [39m[38;5;197mBIAS_LR_FACTOR[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m  [39m[38;5;197mCHECKPOINT_PERIOD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m5000[39m
+[38;5;15m  [39m[38;5;197mCLIP_GRADIENTS[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mCLIP_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mvalue[39m
+[38;5;15m    [39m[38;5;197mCLIP_VALUE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1.0[39m
+[38;5;15m    [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mNORM_TYPE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2.0[39m
+[38;5;15m  [39m[38;5;197mGAMMA[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.1[39m
+[38;5;15m  [39m[38;5;197mIMS_PER_BATCH[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m16[39m
+[38;5;15m  [39m[38;5;197mLR_SCHEDULER_NAME[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mWarmupMultiStepLR[39m
+[38;5;15m  [39m[38;5;197mMAX_ITER[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m16000[39m
+[38;5;15m  [39m[38;5;197mMOMENTUM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.9[39m
+[38;5;15m  [39m[38;5;197mNESTEROV[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mNUM_DECAYS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m3[39m
+[38;5;15m  [39m[38;5;197mREFERENCE_WORLD_SIZE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+[38;5;15m  [39m[38;5;197mRESCALE_INTERVAL[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m  [39m[38;5;197mSTEPS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m[[39m[38;5;15m][39m
+[38;5;15m  [39m[38;5;197mWARMUP_FACTOR[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.001[39m
+[38;5;15m  [39m[38;5;197mWARMUP_ITERS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m  [39m[38;5;197mWARMUP_METHOD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mlinear[39m
+[38;5;15m  [39m[38;5;197mWEIGHT_DECAY[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0001[39m
+[38;5;15m  [39m[38;5;197mWEIGHT_DECAY_BIAS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mnull[39m
+[38;5;15m  [39m[38;5;197mWEIGHT_DECAY_NORM[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0.0[39m
+[38;5;197mTEST[39m[38;5;15m:[39m
+[38;5;15m  [39m[38;5;197mAUG[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mFLIP[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mtrue[39m
+[38;5;15m    [39m[38;5;197mMAX_SIZE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m4000[39m
+[38;5;15m    [39m[38;5;197mMIN_SIZES[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m400[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m500[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m600[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m700[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m800[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m900[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1000[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1100[39m
+[38;5;15m    [39m[38;5;15m-[39m[38;5;15m [39m[38;5;141m1200[39m
+[38;5;15m  [39m[38;5;197mDETECTIONS_PER_IMAGE[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m100[39m
+[38;5;15m  [39m[38;5;197mEVAL_PERIOD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m16[39m
+[38;5;15m  [39m[38;5;197mEXPECTED_RESULTS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m[[39m[38;5;15m][39m
+[38;5;15m  [39m[38;5;197mKEYPOINT_OKS_SIGMAS[39m[38;5;15m:[39m[38;5;15m [39m[38;5;15m[[39m[38;5;15m][39m
+[38;5;15m  [39m[38;5;197mPRECISE_BN[39m[38;5;15m:[39m
+[38;5;15m    [39m[38;5;197mENABLED[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141mfalse[39m
+[38;5;15m    [39m[38;5;197mNUM_ITER[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m200[39m
+[38;5;197mVERSION[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m2[39m
+[38;5;197mVIS_PERIOD[39m[38;5;15m:[39m[38;5;15m [39m[38;5;141m0[39m
+
+[11/28 11:11:45] detectron2 INFO: Full config saved to ./output/trial-2022-11-28-11-11-44/config.yaml
+[11/28 11:11:45] d2.utils.env INFO: Using a generated random seed 45385713
+[11/28 11:11:49] d2.engine.defaults INFO: Model:
+GeneralizedRCNN(
+  (backbone): FPN(
+    (fpn_lateral2): Conv2d(256, 256, kernel_size=(1, 1), stride=(1, 1))
+    (fpn_output2): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (fpn_lateral3): Conv2d(512, 256, kernel_size=(1, 1), stride=(1, 1))
+    (fpn_output3): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (fpn_lateral4): Conv2d(1024, 256, kernel_size=(1, 1), stride=(1, 1))
+    (fpn_output4): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (fpn_lateral5): Conv2d(2048, 256, kernel_size=(1, 1), stride=(1, 1))
+    (fpn_output5): Conv2d(256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+    (top_block): LastLevelMaxPool()
+    (bottom_up): ResNet(
+      (stem): BasicStem(
+        (conv1): Conv2d(
+          3, 64, kernel_size=(7, 7), stride=(2, 2), padding=(3, 3), bias=False
+          (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+        )
+      )
+      (res2): Sequential(
+        (0): BottleneckBlock(
+          (shortcut): Conv2d(
+            64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv1): Conv2d(
+            64, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+        )
+        (1): BottleneckBlock(
+          (conv1): Conv2d(
+            256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+        )
+        (2): BottleneckBlock(
+          (conv1): Conv2d(
+            256, 64, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=64, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            64, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+        )
+      )
+      (res3): Sequential(
+        (0): BottleneckBlock(
+          (shortcut): Conv2d(
+            256, 512, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv1): Conv2d(
+            256, 128, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+        )
+        (1): BottleneckBlock(
+          (conv1): Conv2d(
+            512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+        )
+        (2): BottleneckBlock(
+          (conv1): Conv2d(
+            512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+        )
+        (3): BottleneckBlock(
+          (conv1): Conv2d(
+            512, 128, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=128, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            128, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+        )
+      )
+      (res4): Sequential(
+        (0): BottleneckBlock(
+          (shortcut): Conv2d(
+            512, 1024, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+          (conv1): Conv2d(
+            512, 256, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+        (1): BottleneckBlock(
+          (conv1): Conv2d(
+            1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+        (2): BottleneckBlock(
+          (conv1): Conv2d(
+            1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+        (3): BottleneckBlock(
+          (conv1): Conv2d(
+            1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+        (4): BottleneckBlock(
+          (conv1): Conv2d(
+            1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+        (5): BottleneckBlock(
+          (conv1): Conv2d(
+            1024, 256, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=256, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            256, 1024, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=1024, eps=1e-05)
+          )
+        )
+      )
+      (res5): Sequential(
+        (0): BottleneckBlock(
+          (shortcut): Conv2d(
+            1024, 2048, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=2048, eps=1e-05)
+          )
+          (conv1): Conv2d(
+            1024, 512, kernel_size=(1, 1), stride=(2, 2), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=2048, eps=1e-05)
+          )
+        )
+        (1): BottleneckBlock(
+          (conv1): Conv2d(
+            2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=2048, eps=1e-05)
+          )
+        )
+        (2): BottleneckBlock(
+          (conv1): Conv2d(
+            2048, 512, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv2): Conv2d(
+            512, 512, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=512, eps=1e-05)
+          )
+          (conv3): Conv2d(
+            512, 2048, kernel_size=(1, 1), stride=(1, 1), bias=False
+            (norm): FrozenBatchNorm2d(num_features=2048, eps=1e-05)
+          )
+        )
+      )
+    )
+  )
+  (proposal_generator): RPN(
+    (rpn_head): StandardRPNHead(
+      (conv): Conv2d(
+        256, 256, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1)
+        (activation): ReLU()
+      )
+      (objectness_logits): Conv2d(256, 3, kernel_size=(1, 1), stride=(1, 1))
+      (anchor_deltas): Conv2d(256, 12, kernel_size=(1, 1), stride=(1, 1))
+    )
+    (anchor_generator): DefaultAnchorGenerator(
+      (cell_anchors): BufferList()
+    )
+  )
+  (roi_heads): StandardROIHeads(
+    (box_pooler): ROIPooler(
+      (level_poolers): ModuleList(
+        (0): ROIAlign(output_size=(7, 7), spatial_scale=0.25, sampling_ratio=0, aligned=True)
+        (1): ROIAlign(output_size=(7, 7), spatial_scale=0.125, sampling_ratio=0, aligned=True)
+        (2): ROIAlign(output_size=(7, 7), spatial_scale=0.0625, sampling_ratio=0, aligned=True)
+        (3): ROIAlign(output_size=(7, 7), spatial_scale=0.03125, sampling_ratio=0, aligned=True)
+      )
+    )
+    (box_head): FastRCNNConvFCHead(
+      (flatten): Flatten(start_dim=1, end_dim=-1)
+      (fc1): Linear(in_features=12544, out_features=1024, bias=True)
+      (fc_relu1): ReLU()
+      (fc2): Linear(in_features=1024, out_features=1024, bias=True)
+      (fc_relu2): ReLU()
+    )
+    (box_predictor): FastRCNNOutputLayers(
+      (cls_score): Linear(in_features=1024, out_features=4, bias=True)
+      (bbox_pred): Linear(in_features=1024, out_features=12, bias=True)
+    )
+  )
+)
+[11/28 11:11:49] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:11:49] d2.data.datasets.coco INFO: Loaded 565 images in COCO format from ./dataset/train/labels_train.json
+[11/28 11:11:49] d2.data.build INFO: Removed 0 images with no usable annotations. 565 images left.
+[11/28 11:11:49] d2.data.build INFO: Distribution of instances among all 3 categories:
+|  category  | #instances   |  category  | #instances   |  category  | #instances   |
+|:----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+|   break    | 503          |    disc    | 560          |   shadow   | 606          |
+|            |              |            |              |            |              |
+|   total    | 1669         |            |              |            |              |
+[11/28 11:11:49] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[11/28 11:11:49] d2.data.build INFO: Using training sampler TrainingSampler
+[11/28 11:11:49] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:11:49] d2.data.common INFO: Serializing 565 elements to byte tensors and concatenating them all ...
+[11/28 11:11:49] d2.data.common INFO: Serialized dataset takes 0.21 MiB
+[11/28 11:11:49] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in training: [ResizeShortestEdge(short_edge_length=(640, 672, 704, 736, 768, 800), max_size=1333, sample_style='choice'), RandomFlip()]
+[11/28 11:11:49] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:11:49] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:11:49] d2.data.build INFO: Distribution of instances among all 3 categories:
+|  category  | #instances   |  category  | #instances   |  category  | #instances   |
+|:----------:|:-------------|:----------:|:-------------|:----------:|:-------------|
+|   break    | 212          |    disc    | 181          |   shadow   | 190          |
+|            |              |            |              |            |              |
+|   total    | 583          |            |              |            |              |
+[11/28 11:11:49] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:11:49] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:11:49] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:11:49] fvcore.common.checkpoint INFO: [Checkpointer] Loading from detectron2://ImageNetPretrained/MSRA/R-50.pkl ...
+[11/28 11:11:49] d2.checkpoint.c2_model_loading INFO: Renaming Caffe2 weights ......
+[11/28 11:11:49] d2.checkpoint.c2_model_loading INFO: Following weights matched with submodule backbone.bottom_up:
+| Names in Model    | Names in Checkpoint      | Shapes                                          |
+|:------------------|:-------------------------|:------------------------------------------------|
+| res2.0.conv1.*    | res2_0_branch2a_{bn_*,w} | (64,) (64,) (64,) (64,) (64,64,1,1)             |
+| res2.0.conv2.*    | res2_0_branch2b_{bn_*,w} | (64,) (64,) (64,) (64,) (64,64,3,3)             |
+| res2.0.conv3.*    | res2_0_branch2c_{bn_*,w} | (256,) (256,) (256,) (256,) (256,64,1,1)        |
+| res2.0.shortcut.* | res2_0_branch1_{bn_*,w}  | (256,) (256,) (256,) (256,) (256,64,1,1)        |
+| res2.1.conv1.*    | res2_1_branch2a_{bn_*,w} | (64,) (64,) (64,) (64,) (64,256,1,1)            |
+| res2.1.conv2.*    | res2_1_branch2b_{bn_*,w} | (64,) (64,) (64,) (64,) (64,64,3,3)             |
+| res2.1.conv3.*    | res2_1_branch2c_{bn_*,w} | (256,) (256,) (256,) (256,) (256,64,1,1)        |
+| res2.2.conv1.*    | res2_2_branch2a_{bn_*,w} | (64,) (64,) (64,) (64,) (64,256,1,1)            |
+| res2.2.conv2.*    | res2_2_branch2b_{bn_*,w} | (64,) (64,) (64,) (64,) (64,64,3,3)             |
+| res2.2.conv3.*    | res2_2_branch2c_{bn_*,w} | (256,) (256,) (256,) (256,) (256,64,1,1)        |
+| res3.0.conv1.*    | res3_0_branch2a_{bn_*,w} | (128,) (128,) (128,) (128,) (128,256,1,1)       |
+| res3.0.conv2.*    | res3_0_branch2b_{bn_*,w} | (128,) (128,) (128,) (128,) (128,128,3,3)       |
+| res3.0.conv3.*    | res3_0_branch2c_{bn_*,w} | (512,) (512,) (512,) (512,) (512,128,1,1)       |
+| res3.0.shortcut.* | res3_0_branch1_{bn_*,w}  | (512,) (512,) (512,) (512,) (512,256,1,1)       |
+| res3.1.conv1.*    | res3_1_branch2a_{bn_*,w} | (128,) (128,) (128,) (128,) (128,512,1,1)       |
+| res3.1.conv2.*    | res3_1_branch2b_{bn_*,w} | (128,) (128,) (128,) (128,) (128,128,3,3)       |
+| res3.1.conv3.*    | res3_1_branch2c_{bn_*,w} | (512,) (512,) (512,) (512,) (512,128,1,1)       |
+| res3.2.conv1.*    | res3_2_branch2a_{bn_*,w} | (128,) (128,) (128,) (128,) (128,512,1,1)       |
+| res3.2.conv2.*    | res3_2_branch2b_{bn_*,w} | (128,) (128,) (128,) (128,) (128,128,3,3)       |
+| res3.2.conv3.*    | res3_2_branch2c_{bn_*,w} | (512,) (512,) (512,) (512,) (512,128,1,1)       |
+| res3.3.conv1.*    | res3_3_branch2a_{bn_*,w} | (128,) (128,) (128,) (128,) (128,512,1,1)       |
+| res3.3.conv2.*    | res3_3_branch2b_{bn_*,w} | (128,) (128,) (128,) (128,) (128,128,3,3)       |
+| res3.3.conv3.*    | res3_3_branch2c_{bn_*,w} | (512,) (512,) (512,) (512,) (512,128,1,1)       |
+| res4.0.conv1.*    | res4_0_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,512,1,1)       |
+| res4.0.conv2.*    | res4_0_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.0.conv3.*    | res4_0_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res4.0.shortcut.* | res4_0_branch1_{bn_*,w}  | (1024,) (1024,) (1024,) (1024,) (1024,512,1,1)  |
+| res4.1.conv1.*    | res4_1_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,1024,1,1)      |
+| res4.1.conv2.*    | res4_1_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.1.conv3.*    | res4_1_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res4.2.conv1.*    | res4_2_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,1024,1,1)      |
+| res4.2.conv2.*    | res4_2_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.2.conv3.*    | res4_2_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res4.3.conv1.*    | res4_3_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,1024,1,1)      |
+| res4.3.conv2.*    | res4_3_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.3.conv3.*    | res4_3_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res4.4.conv1.*    | res4_4_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,1024,1,1)      |
+| res4.4.conv2.*    | res4_4_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.4.conv3.*    | res4_4_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res4.5.conv1.*    | res4_5_branch2a_{bn_*,w} | (256,) (256,) (256,) (256,) (256,1024,1,1)      |
+| res4.5.conv2.*    | res4_5_branch2b_{bn_*,w} | (256,) (256,) (256,) (256,) (256,256,3,3)       |
+| res4.5.conv3.*    | res4_5_branch2c_{bn_*,w} | (1024,) (1024,) (1024,) (1024,) (1024,256,1,1)  |
+| res5.0.conv1.*    | res5_0_branch2a_{bn_*,w} | (512,) (512,) (512,) (512,) (512,1024,1,1)      |
+| res5.0.conv2.*    | res5_0_branch2b_{bn_*,w} | (512,) (512,) (512,) (512,) (512,512,3,3)       |
+| res5.0.conv3.*    | res5_0_branch2c_{bn_*,w} | (2048,) (2048,) (2048,) (2048,) (2048,512,1,1)  |
+| res5.0.shortcut.* | res5_0_branch1_{bn_*,w}  | (2048,) (2048,) (2048,) (2048,) (2048,1024,1,1) |
+| res5.1.conv1.*    | res5_1_branch2a_{bn_*,w} | (512,) (512,) (512,) (512,) (512,2048,1,1)      |
+| res5.1.conv2.*    | res5_1_branch2b_{bn_*,w} | (512,) (512,) (512,) (512,) (512,512,3,3)       |
+| res5.1.conv3.*    | res5_1_branch2c_{bn_*,w} | (2048,) (2048,) (2048,) (2048,) (2048,512,1,1)  |
+| res5.2.conv1.*    | res5_2_branch2a_{bn_*,w} | (512,) (512,) (512,) (512,) (512,2048,1,1)      |
+| res5.2.conv2.*    | res5_2_branch2b_{bn_*,w} | (512,) (512,) (512,) (512,) (512,512,3,3)       |
+| res5.2.conv3.*    | res5_2_branch2c_{bn_*,w} | (2048,) (2048,) (2048,) (2048,) (2048,512,1,1)  |
+| stem.conv1.norm.* | res_conv1_bn_*           | (64,) (64,) (64,) (64,)                         |
+| stem.conv1.weight | conv1_w                  | (64, 3, 7, 7)                                   |
+[11/28 11:11:49] fvcore.common.checkpoint WARNING: Some model parameters or buffers are not found in the checkpoint:
+backbone.fpn_lateral2.{bias, weight}
+backbone.fpn_lateral3.{bias, weight}
+backbone.fpn_lateral4.{bias, weight}
+backbone.fpn_lateral5.{bias, weight}
+backbone.fpn_output2.{bias, weight}
+backbone.fpn_output3.{bias, weight}
+backbone.fpn_output4.{bias, weight}
+backbone.fpn_output5.{bias, weight}
+proposal_generator.rpn_head.anchor_deltas.{bias, weight}
+proposal_generator.rpn_head.conv.{bias, weight}
+proposal_generator.rpn_head.objectness_logits.{bias, weight}
+roi_heads.box_head.fc1.{bias, weight}
+roi_heads.box_head.fc2.{bias, weight}
+roi_heads.box_predictor.bbox_pred.{bias, weight}
+roi_heads.box_predictor.cls_score.{bias, weight}
+[11/28 11:11:49] fvcore.common.checkpoint WARNING: The checkpoint state_dict contains keys that are not used by the model:
+  fc1000.{bias, weight}
+  stem.conv1.bias
+[11/28 11:11:49] d2.engine.train_loop INFO: Starting training from iteration 0
+[11/28 11:12:05] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:12:05] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:12:05] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:12:05] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:12:05] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:12:05] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:12:05] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:12:05] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:12:06] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0313 s/iter. Eval: 0.0004 s/iter. Total: 0.0324 s/iter. ETA=0:00:05
+[11/28 11:12:11] d2.evaluation.evaluator INFO: Inference done 164/184. Dataloading: 0.0009 s/iter. Inference: 0.0315 s/iter. Eval: 0.0004 s/iter. Total: 0.0328 s/iter. ETA=0:00:00
+[11/28 11:12:12] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.892425 (0.032919 s / iter per device, on 1 devices)
+[11/28 11:12:12] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031445 s / iter per device, on 1 devices)
+[11/28 11:12:12] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:12:12] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:12:12] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:12:12] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:12:12] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:12:12] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:12:12] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:12:12] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.001 | 0.005  | 0.000  | 0.000 | 0.000 | 0.060 |
+[11/28 11:12:12] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.002 | shadow     | 0.002 |
+[11/28 11:12:12] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:12:12] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:12:12] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:12:12] d2.evaluation.testing INFO: copypaste: 0.0012,0.0049,0.0001,0.0000,0.0000,0.0600
+[11/28 11:12:24] d2.utils.events INFO:  eta: 3:41:39  iter: 19  total_loss: 2.992  loss_cls: 1.414  loss_box_reg: 0.0217  loss_rpn_cls: 0.7032  loss_rpn_loc: 0.8523  validation_loss: 3.053  time: 0.8402  data_time: 0.0699  lr: 1.9981e-06  max_mem: 9915M
+[11/28 11:12:34] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:12:34] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:12:34] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:12:34] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:12:34] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:12:34] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:12:34] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:12:34] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:12:35] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0307 s/iter. Eval: 0.0004 s/iter. Total: 0.0318 s/iter. ETA=0:00:05
+[11/28 11:12:40] d2.evaluation.evaluator INFO: Inference done 160/184. Dataloading: 0.0009 s/iter. Inference: 0.0321 s/iter. Eval: 0.0005 s/iter. Total: 0.0335 s/iter. ETA=0:00:00
+[11/28 11:12:41] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.979799 (0.033407 s / iter per device, on 1 devices)
+[11/28 11:12:41] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031872 s / iter per device, on 1 devices)
+[11/28 11:12:41] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:12:41] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:12:41] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:12:41] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:12:41] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.17 seconds.
+[11/28 11:12:41] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:12:41] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:12:41] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.007 | 0.038  | 0.001  | 0.000 | 0.001 | 0.095 |
+[11/28 11:12:41] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.021 | shadow     | 0.001 |
+[11/28 11:12:41] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:12:41] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:12:41] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:12:41] d2.evaluation.testing INFO: copypaste: 0.0074,0.0379,0.0006,0.0000,0.0006,0.0950
+[11/28 11:12:56] d2.utils.events INFO:  eta: 3:43:35  iter: 39  total_loss: 2.417  loss_cls: 0.9009  loss_box_reg: 0.01847  loss_rpn_cls: 0.6998  loss_rpn_loc: 0.8991  validation_loss: 2.812  time: 0.8428  data_time: 0.0549  lr: 3.9961e-06  max_mem: 9915M
+[11/28 11:13:03] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:13:03] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:13:03] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:13:03] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:13:03] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:13:03] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:13:03] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:13:03] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:13:03] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0006 s/iter. Inference: 0.0327 s/iter. Eval: 0.0004 s/iter. Total: 0.0338 s/iter. ETA=0:00:05
+[11/28 11:13:08] d2.evaluation.evaluator INFO: Inference done 160/184. Dataloading: 0.0009 s/iter. Inference: 0.0323 s/iter. Eval: 0.0005 s/iter. Total: 0.0337 s/iter. ETA=0:00:00
+[11/28 11:13:09] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.030956 (0.033692 s / iter per device, on 1 devices)
+[11/28 11:13:09] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032164 s / iter per device, on 1 devices)
+[11/28 11:13:09] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:13:09] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:13:09] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:13:09] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:13:09] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:13:09] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:13:09] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:13:09] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.097 | 0.534  | 0.006  | 0.000 | 0.017 | 0.142 |
+[11/28 11:13:09] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.286 | shadow     | 0.005 |
+[11/28 11:13:09] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:13:09] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:13:09] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:13:09] d2.evaluation.testing INFO: copypaste: 0.0969,0.5344,0.0064,0.0000,0.0169,0.1420
+[11/28 11:13:28] d2.utils.events INFO:  eta: 3:43:58  iter: 59  total_loss: 2.014  loss_cls: 0.3681  loss_box_reg: 0.02317  loss_rpn_cls: 0.6966  loss_rpn_loc: 0.8885  validation_loss: 2.571  time: 0.8445  data_time: 0.0514  lr: 5.9941e-06  max_mem: 9915M
+[11/28 11:13:31] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:13:31] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:13:31] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:13:31] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:13:31] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:13:32] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:13:32] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:13:32] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:13:32] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0006 s/iter. Inference: 0.0324 s/iter. Eval: 0.0004 s/iter. Total: 0.0334 s/iter. ETA=0:00:05
+[11/28 11:13:37] d2.evaluation.evaluator INFO: Inference done 162/184. Dataloading: 0.0009 s/iter. Inference: 0.0318 s/iter. Eval: 0.0005 s/iter. Total: 0.0332 s/iter. ETA=0:00:00
+[11/28 11:13:38] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.122892 (0.034206 s / iter per device, on 1 devices)
+[11/28 11:13:38] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031824 s / iter per device, on 1 devices)
+[11/28 11:13:38] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:13:38] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:13:38] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:13:38] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:13:38] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:13:38] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:13:38] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:13:38] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.098 | 0.497  | 0.004  | 0.000 | 0.017 | 0.123 |
+[11/28 11:13:38] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.291 | shadow     | 0.005 |
+[11/28 11:13:38] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:13:38] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:13:38] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:13:38] d2.evaluation.testing INFO: copypaste: 0.0985,0.4973,0.0040,0.0000,0.0167,0.1230
+[11/28 11:14:00] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:14:00] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:14:00] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:14:00] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:14:00] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:14:00] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:14:00] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:14:00] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:14:01] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0006 s/iter. Inference: 0.0324 s/iter. Eval: 0.0005 s/iter. Total: 0.0335 s/iter. ETA=0:00:05
+[11/28 11:14:06] d2.evaluation.evaluator INFO: Inference done 161/184. Dataloading: 0.0009 s/iter. Inference: 0.0321 s/iter. Eval: 0.0005 s/iter. Total: 0.0335 s/iter. ETA=0:00:00
+[11/28 11:14:07] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.996380 (0.033499 s / iter per device, on 1 devices)
+[11/28 11:14:07] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031955 s / iter per device, on 1 devices)
+[11/28 11:14:07] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:14:07] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:14:07] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:14:07] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:14:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.09 seconds.
+[11/28 11:14:07] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:14:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:14:07] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.080 | 0.411  | 0.006  | 0.000 | 0.009 | 0.098 |
+[11/28 11:14:07] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.238 | shadow     | 0.003 |
+[11/28 11:14:07] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:14:07] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:14:07] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:14:07] d2.evaluation.testing INFO: copypaste: 0.0803,0.4114,0.0063,0.0000,0.0095,0.0978
+[11/28 11:14:16] d2.utils.events INFO:  eta: 3:46:16  iter: 79  total_loss: 1.796  loss_cls: 0.1811  loss_box_reg: 0.0257  loss_rpn_cls: 0.692  loss_rpn_loc: 0.8938  validation_loss: 2.167  time: 0.8480  data_time: 0.0563  lr: 7.9921e-06  max_mem: 9915M
+[11/28 11:14:29] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:14:29] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:14:29] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:14:29] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:14:29] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:14:29] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:14:29] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:14:29] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:14:30] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0005 s/iter. Inference: 0.0318 s/iter. Eval: 0.0005 s/iter. Total: 0.0328 s/iter. ETA=0:00:05
+[11/28 11:14:35] d2.evaluation.evaluator INFO: Inference done 163/184. Dataloading: 0.0009 s/iter. Inference: 0.0316 s/iter. Eval: 0.0005 s/iter. Total: 0.0330 s/iter. ETA=0:00:00
+[11/28 11:14:35] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.913474 (0.033036 s / iter per device, on 1 devices)
+[11/28 11:14:35] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031503 s / iter per device, on 1 devices)
+[11/28 11:14:36] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:14:36] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:14:36] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:14:36] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:14:36] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:14:36] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:14:36] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:14:36] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.066 | 0.327  | 0.005  | 0.000 | 0.006 | 0.079 |
+[11/28 11:14:36] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.197 | shadow     | 0.002 |
+[11/28 11:14:36] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:14:36] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:14:36] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:14:36] d2.evaluation.testing INFO: copypaste: 0.0661,0.3266,0.0052,0.0000,0.0062,0.0792
+[11/28 11:14:48] d2.utils.events INFO:  eta: 3:45:59  iter: 99  total_loss: 1.639  loss_cls: 0.1313  loss_box_reg: 0.02632  loss_rpn_cls: 0.6825  loss_rpn_loc: 0.7998  validation_loss: 2.062  time: 0.8504  data_time: 0.0526  lr: 9.9901e-06  max_mem: 9915M
+[11/28 11:14:58] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:14:58] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:14:58] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:14:58] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:14:58] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:14:58] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:14:58] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:14:58] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:14:59] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0320 s/iter. Eval: 0.0005 s/iter. Total: 0.0333 s/iter. ETA=0:00:05
+[11/28 11:15:04] d2.evaluation.evaluator INFO: Inference done 156/184. Dataloading: 0.0009 s/iter. Inference: 0.0330 s/iter. Eval: 0.0005 s/iter. Total: 0.0345 s/iter. ETA=0:00:00
+[11/28 11:15:04] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.144041 (0.034324 s / iter per device, on 1 devices)
+[11/28 11:15:04] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032762 s / iter per device, on 1 devices)
+[11/28 11:15:05] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:15:05] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:15:05] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:15:05] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:15:05] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:15:05] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:15:05] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:15:05] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.050 | 0.249  | 0.002  | 0.000 | 0.002 | 0.060 |
+[11/28 11:15:05] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.148 | shadow     | 0.002 |
+[11/28 11:15:05] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:15:05] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:15:05] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:15:05] d2.evaluation.testing INFO: copypaste: 0.0498,0.2487,0.0021,0.0000,0.0023,0.0595
+[11/28 11:15:20] d2.utils.events INFO:  eta: 3:46:42  iter: 119  total_loss: 1.661  loss_cls: 0.1198  loss_box_reg: 0.02938  loss_rpn_cls: 0.6752  loss_rpn_loc: 0.8357  validation_loss: 1.956  time: 0.8541  data_time: 0.0531  lr: 1.1988e-05  max_mem: 9915M
+[11/28 11:15:27] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:15:27] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:15:27] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:15:27] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:15:27] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:15:27] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:15:27] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:15:27] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:15:28] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0006 s/iter. Inference: 0.0323 s/iter. Eval: 0.0004 s/iter. Total: 0.0334 s/iter. ETA=0:00:05
+[11/28 11:15:33] d2.evaluation.evaluator INFO: Inference done 163/184. Dataloading: 0.0009 s/iter. Inference: 0.0317 s/iter. Eval: 0.0005 s/iter. Total: 0.0331 s/iter. ETA=0:00:00
+[11/28 11:15:33] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.930386 (0.033131 s / iter per device, on 1 devices)
+[11/28 11:15:33] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031583 s / iter per device, on 1 devices)
+[11/28 11:15:33] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:15:33] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:15:33] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:15:34] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:15:34] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.08 seconds.
+[11/28 11:15:34] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:15:34] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:15:34] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.039 | 0.195  | 0.001  | 0.000 | 0.002 | 0.045 |
+[11/28 11:15:34] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.114 | shadow     | 0.002 |
+[11/28 11:15:34] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:15:34] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:15:34] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:15:34] d2.evaluation.testing INFO: copypaste: 0.0388,0.1950,0.0015,0.0000,0.0016,0.0453
+[11/28 11:15:53] d2.utils.events INFO:  eta: 3:47:34  iter: 139  total_loss: 1.548  loss_cls: 0.1217  loss_box_reg: 0.03342  loss_rpn_cls: 0.6606  loss_rpn_loc: 0.7369  validation_loss: 1.913  time: 0.8589  data_time: 0.0554  lr: 1.3986e-05  max_mem: 9915M
+[11/28 11:15:56] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:15:56] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:15:56] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:15:56] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:15:56] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:15:56] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:15:56] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:15:56] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:15:57] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0312 s/iter. Eval: 0.0005 s/iter. Total: 0.0323 s/iter. ETA=0:00:05
+[11/28 11:16:02] d2.evaluation.evaluator INFO: Inference done 162/184. Dataloading: 0.0009 s/iter. Inference: 0.0318 s/iter. Eval: 0.0005 s/iter. Total: 0.0332 s/iter. ETA=0:00:00
+[11/28 11:16:03] d2.evaluation.evaluator INFO: Total inference time: 0:00:05.960924 (0.033301 s / iter per device, on 1 devices)
+[11/28 11:16:03] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.031748 s / iter per device, on 1 devices)
+[11/28 11:16:03] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:16:03] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:16:03] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:16:03] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:16:03] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.17 seconds.
+[11/28 11:16:03] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:16:03] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:16:03] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.019 | 0.093  | 0.000  | 0.000 | 0.000 | 0.021 |
+[11/28 11:16:03] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.054 | shadow     | 0.001 |
+[11/28 11:16:03] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:16:03] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:16:03] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:16:03] d2.evaluation.testing INFO: copypaste: 0.0186,0.0933,0.0004,0.0000,0.0000,0.0213
+[11/28 11:16:27] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:16:27] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:16:27] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:16:27] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:16:27] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:16:27] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:16:27] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:16:27] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:16:27] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0009 s/iter. Inference: 0.0354 s/iter. Eval: 0.0006 s/iter. Total: 0.0368 s/iter. ETA=0:00:06
+[11/28 11:16:32] d2.evaluation.evaluator INFO: Inference done 160/184. Dataloading: 0.0009 s/iter. Inference: 0.0324 s/iter. Eval: 0.0005 s/iter. Total: 0.0338 s/iter. ETA=0:00:00
+[11/28 11:16:33] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.060131 (0.033855 s / iter per device, on 1 devices)
+[11/28 11:16:33] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032279 s / iter per device, on 1 devices)
+[11/28 11:16:33] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:16:33] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:16:33] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:16:33] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:16:33] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.07 seconds.
+[11/28 11:16:33] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:16:33] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:16:33] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.008 | 0.039  | 0.000  | 0.000 | 0.193 | 0.009 |
+[11/28 11:16:33] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.022 | shadow     | 0.001 |
+[11/28 11:16:33] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:16:33] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:16:33] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:16:33] d2.evaluation.testing INFO: copypaste: 0.0079,0.0395,0.0002,0.0000,0.1925,0.0090
+[11/28 11:16:42] d2.utils.events INFO:  eta: 3:48:00  iter: 159  total_loss: 1.689  loss_cls: 0.1178  loss_box_reg: 0.03368  loss_rpn_cls: 0.646  loss_rpn_loc: 0.8764  validation_loss: 1.87  time: 0.8674  data_time: 0.0540  lr: 1.5984e-05  max_mem: 9915M
+[11/28 11:16:56] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:16:56] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:16:56] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:16:56] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:16:56] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:16:56] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:16:56] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:16:56] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:16:57] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0006 s/iter. Inference: 0.0332 s/iter. Eval: 0.0005 s/iter. Total: 0.0343 s/iter. ETA=0:00:05
+[11/28 11:17:02] d2.evaluation.evaluator INFO: Inference done 155/184. Dataloading: 0.0009 s/iter. Inference: 0.0333 s/iter. Eval: 0.0005 s/iter. Total: 0.0348 s/iter. ETA=0:00:01
+[11/28 11:17:03] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.389730 (0.035697 s / iter per device, on 1 devices)
+[11/28 11:17:03] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.034070 s / iter per device, on 1 devices)
+[11/28 11:17:03] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:17:03] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:17:03] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:17:03] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:17:03] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.08 seconds.
+[11/28 11:17:03] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:17:03] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:17:03] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.011 | 0.052  | 0.000  | 0.000 | 0.007 | 0.012 |
+[11/28 11:17:03] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.030 | shadow     | 0.002 |
+[11/28 11:17:03] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:17:03] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:17:03] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:17:03] d2.evaluation.testing INFO: copypaste: 0.0107,0.0523,0.0005,0.0000,0.0073,0.0123
+[11/28 11:17:16] d2.utils.events INFO:  eta: 3:48:43  iter: 179  total_loss: 1.517  loss_cls: 0.1174  loss_box_reg: 0.03724  loss_rpn_cls: 0.6272  loss_rpn_loc: 0.7286  validation_loss: 1.869  time: 0.8734  data_time: 0.0551  lr: 1.7982e-05  max_mem: 10277M
+[11/28 11:17:27] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:17:27] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:17:27] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:17:27] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:17:27] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:17:27] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:17:27] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:17:27] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:17:28] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0324 s/iter. Eval: 0.0005 s/iter. Total: 0.0335 s/iter. ETA=0:00:05
+[11/28 11:17:33] d2.evaluation.evaluator INFO: Inference done 154/184. Dataloading: 0.0009 s/iter. Inference: 0.0334 s/iter. Eval: 0.0005 s/iter. Total: 0.0349 s/iter. ETA=0:00:01
+[11/28 11:17:34] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.265729 (0.035004 s / iter per device, on 1 devices)
+[11/28 11:17:34] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.033376 s / iter per device, on 1 devices)
+[11/28 11:17:34] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:17:34] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:17:34] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:17:34] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:17:34] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.08 seconds.
+[11/28 11:17:34] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:17:34] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:17:34] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.007 | 0.042  | 0.001  | 0.000 | 0.135 | 0.011 |
+[11/28 11:17:34] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.017 | shadow     | 0.005 |
+[11/28 11:17:34] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:17:34] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:17:34] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:17:34] d2.evaluation.testing INFO: copypaste: 0.0074,0.0419,0.0006,0.0000,0.1351,0.0110
+[11/28 11:17:51] d2.utils.events INFO:  eta: 3:50:19  iter: 199  total_loss: 1.36  loss_cls: 0.1124  loss_box_reg: 0.03687  loss_rpn_cls: 0.5999  loss_rpn_loc: 0.6078  validation_loss: 1.847  time: 0.8801  data_time: 0.0569  lr: 1.998e-05  max_mem: 10277M
+[11/28 11:17:59] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:17:59] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:17:59] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:17:59] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:17:59] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:17:59] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:17:59] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:17:59] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:17:59] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0328 s/iter. Eval: 0.0006 s/iter. Total: 0.0342 s/iter. ETA=0:00:05
+[11/28 11:18:04] d2.evaluation.evaluator INFO: Inference done 157/184. Dataloading: 0.0009 s/iter. Inference: 0.0330 s/iter. Eval: 0.0005 s/iter. Total: 0.0344 s/iter. ETA=0:00:00
+[11/28 11:18:05] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.159306 (0.034410 s / iter per device, on 1 devices)
+[11/28 11:18:05] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032820 s / iter per device, on 1 devices)
+[11/28 11:18:05] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:18:05] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:18:05] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:18:06] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:18:06] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.08 seconds.
+[11/28 11:18:06] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:18:06] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.02 seconds.
+[11/28 11:18:06] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.005 | 0.033  | 0.000  | 0.000 | 0.025 | 0.007 |
+[11/28 11:18:06] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.014 | shadow     | 0.003 |
+[11/28 11:18:06] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:18:06] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:18:06] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:18:06] d2.evaluation.testing INFO: copypaste: 0.0054,0.0330,0.0003,0.0000,0.0252,0.0074
+[11/28 11:18:27] d2.utils.events INFO:  eta: 3:51:07  iter: 219  total_loss: 1.278  loss_cls: 0.124  loss_box_reg: 0.051  loss_rpn_cls: 0.5702  loss_rpn_loc: 0.5365  validation_loss: 1.826  time: 0.8901  data_time: 0.0509  lr: 2.1978e-05  max_mem: 10277M
+[11/28 11:18:31] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:18:31] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:18:31] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:18:31] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:18:31] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:18:31] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:18:31] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:18:31] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:18:32] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0347 s/iter. Eval: 0.0004 s/iter. Total: 0.0357 s/iter. ETA=0:00:06
+[11/28 11:18:37] d2.evaluation.evaluator INFO: Inference done 153/184. Dataloading: 0.0009 s/iter. Inference: 0.0340 s/iter. Eval: 0.0004 s/iter. Total: 0.0354 s/iter. ETA=0:00:01
+[11/28 11:18:38] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.324980 (0.035335 s / iter per device, on 1 devices)
+[11/28 11:18:38] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.033794 s / iter per device, on 1 devices)
+[11/28 11:18:38] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:18:38] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:18:38] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:18:38] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:18:38] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.05 seconds.
+[11/28 11:18:38] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:18:38] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:18:38] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.001 | 0.006  | 0.000  | 0.000 | 0.000 | 0.001 |
+[11/28 11:18:38] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.002 | shadow     | 0.001 |
+[11/28 11:18:38] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:18:38] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:18:38] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:18:38] d2.evaluation.testing INFO: copypaste: 0.0010,0.0060,0.0000,0.0000,0.0000,0.0014
+[11/28 11:19:06] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:19:06] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:19:06] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:19:06] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:19:06] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:19:06] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:19:06] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:19:06] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:19:06] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0331 s/iter. Eval: 0.0004 s/iter. Total: 0.0343 s/iter. ETA=0:00:05
+[11/28 11:19:12] d2.evaluation.evaluator INFO: Inference done 152/184. Dataloading: 0.0009 s/iter. Inference: 0.0342 s/iter. Eval: 0.0004 s/iter. Total: 0.0356 s/iter. ETA=0:00:01
+[11/28 11:19:13] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.335160 (0.035392 s / iter per device, on 1 devices)
+[11/28 11:19:13] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.033860 s / iter per device, on 1 devices)
+[11/28 11:19:13] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:19:13] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:19:13] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:19:13] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:19:13] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.04 seconds.
+[11/28 11:19:13] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:19:13] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:19:13] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.002 | 0.007  | 0.000  | 0.000 | 0.000 | 0.002 |
+[11/28 11:19:13] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.003 | shadow     | 0.002 |
+[11/28 11:19:13] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:19:13] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:19:13] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:19:13] d2.evaluation.testing INFO: copypaste: 0.0016,0.0074,0.0000,0.0000,0.0000,0.0022
+[11/28 11:19:22] d2.utils.events INFO:  eta: 3:51:50  iter: 239  total_loss: 1.19  loss_cls: 0.1325  loss_box_reg: 0.05521  loss_rpn_cls: 0.5092  loss_rpn_loc: 0.4856  validation_loss: 1.793  time: 0.9117  data_time: 0.0572  lr: 2.3976e-05  max_mem: 10279M
+[11/28 11:19:41] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:19:41] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:19:41] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:19:41] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:19:41] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:19:41] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:19:41] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:19:41] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:19:41] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0329 s/iter. Eval: 0.0004 s/iter. Total: 0.0340 s/iter. ETA=0:00:05
+[11/28 11:19:46] d2.evaluation.evaluator INFO: Inference done 158/184. Dataloading: 0.0010 s/iter. Inference: 0.0328 s/iter. Eval: 0.0004 s/iter. Total: 0.0342 s/iter. ETA=0:00:00
+[11/28 11:19:47] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.147739 (0.034345 s / iter per device, on 1 devices)
+[11/28 11:19:47] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032796 s / iter per device, on 1 devices)
+[11/28 11:19:47] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:19:47] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:19:47] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:19:47] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:19:47] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.05 seconds.
+[11/28 11:19:47] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:19:48] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:19:48] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.001 | 0.005  | 0.000  | 0.000 | 0.000 | 0.002 |
+[11/28 11:19:48] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.001 | shadow     | 0.002 |
+[11/28 11:19:48] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:19:48] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:19:48] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:19:48] d2.evaluation.testing INFO: copypaste: 0.0009,0.0046,0.0000,0.0000,0.0000,0.0015
+[11/28 11:20:01] d2.utils.events INFO:  eta: 3:54:05  iter: 259  total_loss: 1.026  loss_cls: 0.1046  loss_box_reg: 0.03844  loss_rpn_cls: 0.4504  loss_rpn_loc: 0.4062  validation_loss: 1.791  time: 0.9329  data_time: 0.0536  lr: 2.5974e-05  max_mem: 10279M
+[11/28 11:20:16] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:20:16] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:20:16] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:20:16] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:20:16] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:20:16] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:20:16] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:20:16] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:20:16] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0328 s/iter. Eval: 0.0004 s/iter. Total: 0.0338 s/iter. ETA=0:00:05
+[11/28 11:20:21] d2.evaluation.evaluator INFO: Inference done 161/184. Dataloading: 0.0010 s/iter. Inference: 0.0320 s/iter. Eval: 0.0004 s/iter. Total: 0.0334 s/iter. ETA=0:00:00
+[11/28 11:20:22] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.010673 (0.033579 s / iter per device, on 1 devices)
+[11/28 11:20:22] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032048 s / iter per device, on 1 devices)
+[11/28 11:20:22] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:20:22] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:20:22] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:20:22] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:20:22] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.03 seconds.
+[11/28 11:20:22] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:20:22] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:20:22] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.002 | 0.007  | 0.000  | 0.000 | 0.000 | 0.003 |
+[11/28 11:20:22] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.001 | shadow     | 0.004 |
+[11/28 11:20:22] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:20:22] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:20:22] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:20:22] d2.evaluation.testing INFO: copypaste: 0.0019,0.0075,0.0000,0.0000,0.0000,0.0034
+[11/28 11:20:41] d2.utils.events INFO:  eta: 3:56:11  iter: 279  total_loss: 0.9474  loss_cls: 0.1139  loss_box_reg: 0.03956  loss_rpn_cls: 0.3987  loss_rpn_loc: 0.4135  validation_loss: 1.789  time: 0.9517  data_time: 0.0567  lr: 2.7972e-05  max_mem: 10279M
+[11/28 11:20:51] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:20:51] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:20:51] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:20:51] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:20:51] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:20:51] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:20:51] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:20:51] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:20:51] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0340 s/iter. Eval: 0.0004 s/iter. Total: 0.0351 s/iter. ETA=0:00:06
+[11/28 11:20:56] d2.evaluation.evaluator INFO: Inference done 151/184. Dataloading: 0.0009 s/iter. Inference: 0.0344 s/iter. Eval: 0.0004 s/iter. Total: 0.0358 s/iter. ETA=0:00:01
+[11/28 11:20:57] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.386770 (0.035680 s / iter per device, on 1 devices)
+[11/28 11:20:57] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.034177 s / iter per device, on 1 devices)
+[11/28 11:20:57] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:20:57] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:20:57] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:20:57] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:20:57] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:20:57] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:20:57] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:20:57] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:20:57] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:20:57] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:20:57] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:20:57] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:20:57] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:21:20] d2.utils.events INFO:  eta: 3:57:21  iter: 299  total_loss: 0.8551  loss_cls: 0.101  loss_box_reg: 0.03762  loss_rpn_cls: 0.3337  loss_rpn_loc: 0.3633  validation_loss: 1.758  time: 0.9684  data_time: 0.0549  lr: 2.997e-05  max_mem: 10279M
+[11/28 11:21:25] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:21:25] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:21:25] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:21:25] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:21:25] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:21:25] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:21:25] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:21:25] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:21:26] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0337 s/iter. Eval: 0.0003 s/iter. Total: 0.0347 s/iter. ETA=0:00:06
+[11/28 11:21:31] d2.evaluation.evaluator INFO: Inference done 152/184. Dataloading: 0.0010 s/iter. Inference: 0.0342 s/iter. Eval: 0.0003 s/iter. Total: 0.0355 s/iter. ETA=0:00:01
+[11/28 11:21:32] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.338661 (0.035412 s / iter per device, on 1 devices)
+[11/28 11:21:32] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.033942 s / iter per device, on 1 devices)
+[11/28 11:21:32] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:21:32] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:21:32] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:21:32] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:21:32] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:21:32] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:21:32] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:21:32] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:21:32] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:21:32] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:21:32] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:21:32] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:21:32] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:22:00] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:22:00] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:22:00] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:22:00] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:22:00] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:22:00] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:22:00] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:22:00] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:22:01] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0331 s/iter. Eval: 0.0002 s/iter. Total: 0.0340 s/iter. ETA=0:00:05
+[11/28 11:22:06] d2.evaluation.evaluator INFO: Inference done 157/184. Dataloading: 0.0009 s/iter. Inference: 0.0331 s/iter. Eval: 0.0003 s/iter. Total: 0.0343 s/iter. ETA=0:00:00
+[11/28 11:22:07] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.139615 (0.034300 s / iter per device, on 1 devices)
+[11/28 11:22:07] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032918 s / iter per device, on 1 devices)
+[11/28 11:22:07] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:22:07] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:22:07] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:22:07] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:22:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:22:07] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:22:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:22:07] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:22:07] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:22:07] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:22:07] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:22:07] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:22:07] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:22:16] d2.utils.events INFO:  eta: 4:00:30  iter: 319  total_loss: 0.7875  loss_cls: 0.1107  loss_box_reg: 0.04523  loss_rpn_cls: 0.2816  loss_rpn_loc: 0.3658  validation_loss: 1.679  time: 0.9824  data_time: 0.0536  lr: 3.1968e-05  max_mem: 10279M
+[11/28 11:22:34] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:22:34] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:22:34] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:22:34] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:22:34] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:22:34] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:22:34] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:22:34] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:22:35] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0327 s/iter. Eval: 0.0003 s/iter. Total: 0.0338 s/iter. ETA=0:00:05
+[11/28 11:22:40] d2.evaluation.evaluator INFO: Inference done 158/184. Dataloading: 0.0009 s/iter. Inference: 0.0328 s/iter. Eval: 0.0003 s/iter. Total: 0.0340 s/iter. ETA=0:00:00
+[11/28 11:22:41] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.146318 (0.034337 s / iter per device, on 1 devices)
+[11/28 11:22:41] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032906 s / iter per device, on 1 devices)
+[11/28 11:22:41] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:22:41] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:22:41] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:22:41] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:22:41] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:22:41] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:22:41] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:22:41] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:22:41] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:22:41] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:22:41] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:22:41] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:22:41] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:22:55] d2.utils.events INFO:  eta: 4:05:01  iter: 339  total_loss: 0.7609  loss_cls: 0.1012  loss_box_reg: 0.04304  loss_rpn_cls: 0.2558  loss_rpn_loc: 0.3584  validation_loss: 1.596  time: 0.9929  data_time: 0.0542  lr: 3.3966e-05  max_mem: 10279M
+[11/28 11:23:08] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:23:08] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:23:08] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:23:08] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:23:08] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:23:08] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:23:08] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:23:08] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:23:09] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0349 s/iter. Eval: 0.0004 s/iter. Total: 0.0359 s/iter. ETA=0:00:06
+[11/28 11:23:14] d2.evaluation.evaluator INFO: Inference done 153/184. Dataloading: 0.0009 s/iter. Inference: 0.0341 s/iter. Eval: 0.0003 s/iter. Total: 0.0354 s/iter. ETA=0:00:01
+[11/28 11:23:15] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.327274 (0.035348 s / iter per device, on 1 devices)
+[11/28 11:23:15] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.033883 s / iter per device, on 1 devices)
+[11/28 11:23:15] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:23:15] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:23:15] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:23:15] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:23:15] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:23:15] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:23:15] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:23:15] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:23:15] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:23:15] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:23:15] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:23:15] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:23:15] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:23:34] d2.utils.events INFO:  eta: 4:07:03  iter: 359  total_loss: 0.6909  loss_cls: 0.08727  loss_box_reg: 0.03705  loss_rpn_cls: 0.226  loss_rpn_loc: 0.3357  validation_loss: 1.469  time: 1.0027  data_time: 0.0558  lr: 3.5964e-05  max_mem: 10279M
+[11/28 11:23:43] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:23:43] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:23:43] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:23:43] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:23:43] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:23:43] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:23:43] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:23:43] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:23:44] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0324 s/iter. Eval: 0.0003 s/iter. Total: 0.0335 s/iter. ETA=0:00:05
+[11/28 11:23:49] d2.evaluation.evaluator INFO: Inference done 158/184. Dataloading: 0.0009 s/iter. Inference: 0.0329 s/iter. Eval: 0.0003 s/iter. Total: 0.0342 s/iter. ETA=0:00:00
+[11/28 11:23:50] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.141556 (0.034310 s / iter per device, on 1 devices)
+[11/28 11:23:50] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032845 s / iter per device, on 1 devices)
+[11/28 11:23:50] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:23:50] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:23:50] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:23:50] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:23:50] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:23:50] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:23:50] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:23:50] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.000 | 0.000  | 0.000  | 0.000 | 0.000 | 0.000 |
+[11/28 11:23:50] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.000 |
+[11/28 11:23:50] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:23:50] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:23:50] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:23:50] d2.evaluation.testing INFO: copypaste: 0.0000,0.0000,0.0000,0.0000,0.0000,0.0000
+[11/28 11:24:13] d2.utils.events INFO:  eta: 4:10:16  iter: 379  total_loss: 0.7191  loss_cls: 0.08523  loss_box_reg: 0.03531  loss_rpn_cls: 0.2174  loss_rpn_loc: 0.3382  validation_loss: 1.345  time: 1.0115  data_time: 0.0533  lr: 3.7962e-05  max_mem: 10279M
+[11/28 11:24:17] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:24:17] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:24:17] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:24:17] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:24:17] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:24:17] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:24:17] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:24:17] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:24:18] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0328 s/iter. Eval: 0.0003 s/iter. Total: 0.0339 s/iter. ETA=0:00:05
+[11/28 11:24:23] d2.evaluation.evaluator INFO: Inference done 155/184. Dataloading: 0.0009 s/iter. Inference: 0.0335 s/iter. Eval: 0.0003 s/iter. Total: 0.0348 s/iter. ETA=0:00:01
+[11/28 11:24:24] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.218090 (0.034738 s / iter per device, on 1 devices)
+[11/28 11:24:24] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.033277 s / iter per device, on 1 devices)
+[11/28 11:24:24] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:24:24] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:24:24] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:24:24] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:24:24] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:24:24] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:24:24] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:24:24] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.033 | 0.083  | 0.000  | 0.000 | 0.000 | 0.132 |
+[11/28 11:24:24] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.099 |
+[11/28 11:24:24] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:24:24] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:24:24] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:24:24] d2.evaluation.testing INFO: copypaste: 0.0330,0.0825,0.0000,0.0000,0.0000,0.1320
+[11/28 11:24:52] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:24:52] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:24:52] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:24:52] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:24:52] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:24:52] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:24:52] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:24:52] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:24:52] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0334 s/iter. Eval: 0.0002 s/iter. Total: 0.0343 s/iter. ETA=0:00:05
+[11/28 11:24:57] d2.evaluation.evaluator INFO: Inference done 149/184. Dataloading: 0.0009 s/iter. Inference: 0.0350 s/iter. Eval: 0.0003 s/iter. Total: 0.0362 s/iter. ETA=0:00:01
+[11/28 11:24:58] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.457495 (0.036075 s / iter per device, on 1 devices)
+[11/28 11:24:58] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:06 (0.034653 s / iter per device, on 1 devices)
+[11/28 11:24:58] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:24:58] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:24:58] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:24:58] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:24:58] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:24:58] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:24:58] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:24:58] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.020 | 0.066  | 0.000  | 0.000 | 0.000 | 0.099 |
+[11/28 11:24:58] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.000 | disc       | 0.000 | shadow     | 0.059 |
+[11/28 11:24:58] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:24:58] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:24:58] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:24:58] d2.evaluation.testing INFO: copypaste: 0.0198,0.0660,0.0000,0.0000,0.0000,0.0990
+[11/28 11:25:07] d2.utils.events INFO:  eta: 4:13:24  iter: 399  total_loss: 0.6539  loss_cls: 0.08869  loss_box_reg: 0.04033  loss_rpn_cls: 0.2159  loss_rpn_loc: 0.3284  validation_loss: 1.177  time: 1.0192  data_time: 0.0532  lr: 3.996e-05  max_mem: 10279M
+[11/28 11:25:26] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:25:26] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:25:26] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:25:26] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:25:26] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:25:26] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:25:26] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:25:26] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:25:27] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0007 s/iter. Inference: 0.0333 s/iter. Eval: 0.0002 s/iter. Total: 0.0342 s/iter. ETA=0:00:05
+[11/28 11:25:32] d2.evaluation.evaluator INFO: Inference done 159/184. Dataloading: 0.0009 s/iter. Inference: 0.0326 s/iter. Eval: 0.0003 s/iter. Total: 0.0339 s/iter. ETA=0:00:00
+[11/28 11:25:32] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.094078 (0.034045 s / iter per device, on 1 devices)
+[11/28 11:25:32] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032588 s / iter per device, on 1 devices)
+[11/28 11:25:32] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:25:32] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:25:32] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:25:32] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:25:33] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:25:33] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:25:33] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:25:33] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.063 | 0.199  | 0.011  | 0.000 | 0.000 | 0.200 |
+[11/28 11:25:33] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.001 | disc       | 0.129 | shadow     | 0.059 |
+[11/28 11:25:33] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:25:33] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:25:33] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:25:33] d2.evaluation.testing INFO: copypaste: 0.0631,0.1994,0.0110,0.0000,0.0000,0.2000
+[11/28 11:25:46] d2.utils.events INFO:  eta: 4:20:56  iter: 419  total_loss: 0.6418  loss_cls: 0.09129  loss_box_reg: 0.0438  loss_rpn_cls: 0.1834  loss_rpn_loc: 0.3023  validation_loss: 1.1  time: 1.0260  data_time: 0.0564  lr: 4.1958e-05  max_mem: 10279M
+[11/28 11:26:00] d2.data.datasets.coco WARNING: 
+Category ids in annotations are not in [1, #categories]! We'll apply a mapping for you.
+
+[11/28 11:26:00] d2.data.datasets.coco INFO: Loaded 184 images in COCO format from ./dataset/val/labels_val.json
+[11/28 11:26:00] d2.data.dataset_mapper INFO: [DatasetMapper] Augmentations used in inference: [ResizeShortestEdge(short_edge_length=(800, 800), max_size=1333, sample_style='choice')]
+[11/28 11:26:00] d2.data.common INFO: Serializing the dataset using: <class 'detectron2.data.common.NumpySerializedList'>
+[11/28 11:26:00] d2.data.common INFO: Serializing 184 elements to byte tensors and concatenating them all ...
+[11/28 11:26:00] d2.data.common INFO: Serialized dataset takes 0.07 MiB
+[11/28 11:26:00] d2.evaluation.coco_evaluation WARNING: COCO Evaluator instantiated using config, this is deprecated behavior. Please pass in explicit arguments instead.
+[11/28 11:26:01] d2.evaluation.evaluator INFO: Start inference on 184 batches
+[11/28 11:26:01] d2.evaluation.evaluator INFO: Inference done 11/184. Dataloading: 0.0008 s/iter. Inference: 0.0316 s/iter. Eval: 0.0002 s/iter. Total: 0.0325 s/iter. ETA=0:00:05
+[11/28 11:26:06] d2.evaluation.evaluator INFO: Inference done 159/184. Dataloading: 0.0010 s/iter. Inference: 0.0325 s/iter. Eval: 0.0003 s/iter. Total: 0.0338 s/iter. ETA=0:00:00
+[11/28 11:26:07] d2.evaluation.evaluator INFO: Total inference time: 0:00:06.065018 (0.033883 s / iter per device, on 1 devices)
+[11/28 11:26:07] d2.evaluation.evaluator INFO: Total inference pure compute time: 0:00:05 (0.032430 s / iter per device, on 1 devices)
+[11/28 11:26:07] d2.evaluation.coco_evaluation INFO: Preparing results for COCO format ...
+[11/28 11:26:07] d2.evaluation.coco_evaluation INFO: Saving results to ./output/trial-2022-11-28-11-11-44/inference/coco_instances_results.json
+[11/28 11:26:07] d2.evaluation.coco_evaluation INFO: Evaluating predictions with unofficial COCO API...
+[11/28 11:26:07] d2.evaluation.fast_eval_api INFO: Evaluate annotation type *bbox*
+[11/28 11:26:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.evaluate() finished in 0.02 seconds.
+[11/28 11:26:07] d2.evaluation.fast_eval_api INFO: Accumulating evaluation results...
+[11/28 11:26:07] d2.evaluation.fast_eval_api INFO: COCOeval_opt.accumulate() finished in 0.01 seconds.
+[11/28 11:26:07] d2.evaluation.coco_evaluation INFO: Evaluation results for bbox: 
+|  AP   |  AP50  |  AP75  |  APs  |  APm  |  APl  |
+|:-----:|:------:|:------:|:-----:|:-----:|:-----:|
+| 0.186 | 0.700  | 0.024  | 0.000 | 0.001 | 0.403 |
+[11/28 11:26:07] d2.evaluation.coco_evaluation INFO: Per-category bbox AP: 
+| category   | AP    | category   | AP    | category   | AP    |
+|:-----------|:------|:-----------|:------|:-----------|:------|
+| break      | 0.002 | disc       | 0.481 | shadow     | 0.074 |
+[11/28 11:26:07] d2.engine.defaults INFO: Evaluation results for val in csv format:
+[11/28 11:26:07] d2.evaluation.testing INFO: copypaste: Task: bbox
+[11/28 11:26:07] d2.evaluation.testing INFO: copypaste: AP,AP50,AP75,APs,APm,APl
+[11/28 11:26:07] d2.evaluation.testing INFO: copypaste: 0.1858,0.6998,0.0236,0.0000,0.0009,0.4034
+[11/28 11:26:25] d2.utils.events INFO:  eta: 4:35:22  iter: 439  total_loss: 0.6605  loss_cls: 0.08965  loss_box_reg: 0.03925  loss_rpn_cls: 0.1893  loss_rpn_loc: 0.3214  validation_loss: 1.033  time: 1.0317  data_time: 0.0536  lr: 4.3956e-05  max_mem: 10279M
+[11/28 11:26:33] d2.engine.hooks INFO: Overall training speed: 445 iterations in 0:07:40 (1.0354 s / it)
+[11/28 11:26:33] d2.engine.hooks INFO: Total training time: 0:14:39 (0:06:59 on hooks)
+[11/28 11:26:34] d2.utils.events INFO:  eta: 4:39:02  iter: 447  total_loss: 0.6316  loss_cls: 0.09064  loss_box_reg: 0.0418  loss_rpn_cls: 0.1902  loss_rpn_loc: 0.3027  validation_loss: 1.033  time: 1.0334  data_time: 0.0538  lr: 4.4655e-05  max_mem: 10279M
+[11/28 11:28:44] fvcore.common.checkpoint INFO: [Checkpointer] Loading from ./output/trial1/model_final.pth ...
+[11/28 11:29:01] fvcore.common.checkpoint INFO: [Checkpointer] Loading from ./output/trial-2022-11-28-11-11-44/model_final.pth ...
